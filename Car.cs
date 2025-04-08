@@ -45,16 +45,7 @@ public class Car
     {
         Console.WriteLine($"Brand: {Brand}, Model: {Model}, Year: {_year}, Mileage: {Mileage} km, Fuel Level: {FuelLevel}");
     }
-
-    public void StartEngine()
-    {
-        Console.WriteLine("Engine started!");
-    }
-
-    public void StopEngine()
-    {
-        Console.WriteLine("Engine stopped!");
-    }
+    
     
     public void Drive(int kilometers)
     {
