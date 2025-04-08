@@ -84,8 +84,10 @@ public class Car
         }
     }
 
-    public void Refuel(double liters)
+    public void Refuel()
     {
+        Console.Write("How much would you like to refuel? ");
+        double liters = Convert.ToDouble(Console.ReadLine());
         if (liters <= 0)
         {
             Console.WriteLine("Error: liters cannot be negative!");
