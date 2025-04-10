@@ -1,39 +1,76 @@
-﻿namespace Cars.Clsses;
+﻿namespace Cars;
 
 
 class Program
 {
     static void Main()
     {
-        Car myCar = new Car("Toyota", "Corolla", 2023, 10); // Создаем машину с 10 литрами топлива
-        myCar.DisplayInfo();
+        Car car = new Car("Toyota", "Corolla", 2023, 10); // Создаем машину с 10 литрами топлива
+        car.DisplayInfo();
 
         Console.WriteLine("\nЕдем 100 км:");
-        myCar.Drive(100);
-        myCar.DisplayInfo();
+        car.Drive(100);
+        car.DisplayInfo();
 
         Console.WriteLine("\nПопробуем проехать 500 км (не хватит топлива):");
-        myCar.Drive(500);
-        myCar.DisplayInfo();
+        car.Drive(500);
+        car.DisplayInfo();
 
         Console.WriteLine("\nЗаправляем 30 литров:");
-        myCar.Refuel(30);
-        myCar.DisplayInfo();
+        car.Refuel();
+        car.DisplayInfo();
 
         Console.WriteLine("\nЗаправляем 20 литров:");
-        myCar.Refuel(20);
-        myCar.DisplayInfo();
+        car.Refuel();
+        car.DisplayInfo();
 
         Console.WriteLine("\nПопробуем проехать 502 км (не хватит топлива):");
-        myCar.Drive(502);
-        myCar.DisplayInfo();
+        car.Drive(502);
+        car.DisplayInfo();
         
         Console.WriteLine("\nЗаправляем 200 литров (превышен бак):");
-        myCar.Refuel(200);
-        myCar.DisplayInfo();
+        car.Refuel();
+        car.DisplayInfo();
         
         Console.WriteLine("\nПопробуем проехать 637 км (хватит топлива):");
-        myCar.Drive(637);
-        myCar.DisplayInfo();
+        car.Drive(637);
+        car.DisplayInfo();
+        
+        
+        
+        
+        
+        
+        
+        ElectricCar electricCar = new ElectricCar("Toyota", "Corolla", 2023, 10); // Создаем машину с 10 литрами топлива
+        electricCar.DisplayInfo();
+
+        Console.WriteLine("\nЕдем 100 км:");
+        electricCar.Drive(100);
+        electricCar.DisplayInfo();
+
+        Console.WriteLine("\nПопробуем проехать 500 км (не хватит топлива):");
+        electricCar.Drive(500);
+        electricCar.DisplayInfo();
+
+        Console.WriteLine("\nЗаправляем 30 литров:");
+        electricCar.Charge();
+        electricCar.DisplayInfo();
+
+        Console.WriteLine("\nЗаправляем 20 литров:");
+        electricCar.Charge();
+        electricCar.DisplayInfo();
+
+        Console.WriteLine("\nПопробуем проехать 502 км (не хватит топлива):");
+        electricCar.Drive(502);
+        electricCar.DisplayInfo();
+        
+        Console.WriteLine("\nЗаправляем 200 литров (превышен бак):");
+        electricCar.Charge();
+        electricCar.DisplayInfo();
+        
+        Console.WriteLine("\nПопробуем проехать 637 км (хватит топлива):");
+        electricCar.Drive(637);
+        electricCar.DisplayInfo();
     }
 }
