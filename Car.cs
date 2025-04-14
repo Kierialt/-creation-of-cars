@@ -5,7 +5,7 @@ public class Car
     public static int TotalCars;
     
     private int _year;
-    private int _mileage;     
+    private int _mileageForCars;     
     private double _fuelLevel;
     
     private const double FuelCapacity = 100;
@@ -30,20 +30,22 @@ public class Car
             }
         }
     }
-    public int Mileage => _mileage;
+    
     public double FuelLevel => _fuelLevel;
+    public double MileageForCars => _mileageForCars;
+    
     public Car(string brand, string model, int year,double initialFuel)
     {
         Model= model;
         Year = year;
         Brand = brand;
-        _mileage = 0;
+        _mileageForCars = 0;
         _fuelLevel = Math.Min(initialFuel, FuelCapacity);
         TotalCars++;
     }
     public void DisplayInfo()
     {
-        Console.WriteLine($"Brand: {Brand}, Model: {Model}, Year: {_year}, Mileage: {Mileage} km, Fuel Level: {FuelLevel}");
+        Console.WriteLine($"Brand: {Brand}, Model: {Model}, Year: {_year}, Mileage: {MileageForCars} km, Fuel Level: {FuelLevel:f1} l");
     }
     
     
@@ -58,18 +60,17 @@ public class Car
         double neededFuel = (kilometers / 10.0 * FuelConsumption); // сколько топлива нужно на проездку км
         if (neededFuel > _fuelLevel)
         {
-            int newkm;
             Console.WriteLine($"You want to drive {kilometers} km.");
-            newkm = (int)(FuelLevel * 10 / FuelConsumption);
-            Console.WriteLine($"Not enough fuel,You can drive only {newkm} km.");
+            int maxkm = (int)(FuelLevel * 10 / FuelConsumption);
+            Console.WriteLine($"Not enough fuel,You can drive only {maxkm} km.");
             neededFuel = _fuelLevel;
-            _mileage += newkm;
+            _mileageForCars += maxkm;
             _fuelLevel -= neededFuel;
-            Console.WriteLine($"{Brand} {Model} rives {newkm} km. New mileage: {Mileage} km.");
+            Console.WriteLine($"{Brand} {Model} rives {maxkm} km. New mileage: {MileageForCars} km.");
         }
         else
         {
-            _mileage += kilometers;
+            _mileageForCars += kilometers;
             _fuelLevel -= neededFuel;
             Console.WriteLine($"Drived {kilometers} km. Fuel remaining: {FuelLevel:F1} liters.");
         }

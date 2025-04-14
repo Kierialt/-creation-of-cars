@@ -2,38 +2,74 @@ namespace Cars;
 
 public class ElectricCar : Car
 {
-    private int _batteryLevel; // от 0 до 100
-
-    public int BatteryLevel => _batteryLevel;
+    private double _batteryLevel; // от 0 до 100
+    private double _mileageForElectricCars;
+    
+    private const int ChargeCapacity = 100;
+    private const int ChargeConsumption = 1; 
+    public double BatteryLevel => _batteryLevel;
+    public double MileageForElectricCars => _mileageForElectricCars;
+    
 
     public ElectricCar(string brand, string model, int year, int initialCharge)
-        : base(brand, model, year)
+        : base(brand, model, year, 0)
     {
-        _batteryLevel = Math.Min(initialCharge, 100); // максимум 100%
+        _batteryLevel = Math.Min(initialCharge, ChargeCapacity); // максимум 100%
+    }
+   
+    public new void DisplayInfo()
+    {
+        Console.WriteLine($"{Brand} {Model} (electro {Year}) - mileage: {MileageForElectricCars} km, Battery Level: {BatteryLevel}%");
     }
 
-    public void Charge(int percent)
+    public new void Drive(int kilometers)
     {
-        _batteryLevel = Math.Min(_batteryLevel + percent, 100);
-        Console.WriteLine($"{Brand} заряжена до {_batteryLevel}%");
-    }
-
-    public override void Drive(int kilometers)
-    {
-        int neededPercent = kilometers / 10;
-        if (neededPercent > _batteryLevel)
+        if (kilometers <= 0)
         {
-            Console.WriteLine($"Недостаточно заряда! Доступно только {_batteryLevel * 10} км.");
+            Console.WriteLine("You cannot drive negative or zero kilometers!");
             return;
         }
 
-        _batteryLevel -= neededPercent;
-        _mileage += kilometers;
-        Console.WriteLine($"{Brand} проехала {kilometers} км. Остаток заряда: {_batteryLevel}%");
+        double neededPercent = (kilometers / 10.0 * ChargeConsumption);
+
+        if (neededPercent > _batteryLevel)
+        {
+            Console.WriteLine($"You want to drive {kilometers} km.");
+            int maxKm = (int)(_batteryLevel * 10) / ChargeConsumption;
+
+            Console.WriteLine($"Not enough battery. You can drive only {maxKm} km.");
+            neededPercent = _batteryLevel;
+            _mileageForElectricCars += maxKm;
+            _batteryLevel -= neededPercent;
+
+            Console.WriteLine($"{Brand} {Model} drove {maxKm} km. New mileage: {MileageForElectricCars:f1} km.");
+        }
+        else
+        {
+            _mileageForElectricCars += kilometers;
+            _batteryLevel -= neededPercent;
+
+            Console.WriteLine($"{Brand} {Model} drove {kilometers} km. Battery remaining: {BatteryLevel:f1}%.");
+        }
     }
 
-    public override void DisplayInfo()
+    public void Charge()
     {
-        Console.WriteLine($"{Brand} {Model} (электро, {Year}) — пробег: {_mileage} км, заряд: {_batteryLevel}%");
+        Console.Write("What percentage do you want to charge your electric car? ");
+        int percent = Convert.ToInt32(Console.ReadLine());
+        if (percent <= 0)
+        {
+            Console.WriteLine("Error: percent cannot be negative!");
+        }
+        if (percent + _batteryLevel > ChargeCapacity)
+        {
+            Console.WriteLine($"Error: more than 100 percent cannot be charged. You can charge only {ChargeCapacity - BatteryLevel} percent!");
+            _batteryLevel = ChargeCapacity;
+        }
+        else
+        {
+            _batteryLevel += percent;
+            Console.WriteLine($"The {percent} of battery were charge. Now your electric car has {BatteryLevel} percent");  
+        }
     }
 }
