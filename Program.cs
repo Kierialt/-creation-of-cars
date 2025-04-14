@@ -5,6 +5,7 @@ class Program
 {
     static void Main()
     {
+       /*
         Car car = new Car("Toyota", "Corolla", 2023, 10); // Создаем машину с 10 литрами топлива
         car.DisplayInfo();
 
@@ -38,6 +39,8 @@ class Program
 
 
         
+        
+        
         Console.WriteLine("\n\n\n");
         ElectricCar electricCar = new ElectricCar("Toyota", "Corolla", 2023, 10); // Создаем машину с 10 литрами топлива
         electricCar.DisplayInfo();
@@ -69,6 +72,17 @@ class Program
         Console.WriteLine("\nПопробуем проехать 637 км (хватит заряда):");
         electricCar.Drive(637);
         electricCar.DisplayInfo();
+        */
+        
+        
+        
+        
+        Console.WriteLine("\n\n\n");
+        IVehicle myVehicle = new ElectricCar("Tesla", "Model 3", 2022, 80);
+        myVehicle.StartEngine();
+        myVehicle.Drive(50);
+        myVehicle.StopEngine();
+
         
         Console.WriteLine(($"\n\ntotal number of cars produced: {Car.TotalCars}").ToUpper());
     }

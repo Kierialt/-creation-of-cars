@@ -1,6 +1,6 @@
 namespace Cars;
 
-public class Car
+public class Car: IVehicle
 {
     public static int TotalCars;
     
@@ -42,6 +42,16 @@ public class Car
         _mileageForCars = 0;
         _fuelLevel = Math.Min(initialFuel, FuelCapacity);
         TotalCars++;
+    }
+
+    public void StartEngine()
+    {
+        Console.WriteLine($"{Brand} engine started.");
+    }
+
+    public void StopEngine()
+    {
+        Console.WriteLine($"{Brand} engine stopped.");
     }
     public void DisplayInfo()
     {

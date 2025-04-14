@@ -1,6 +1,6 @@
 namespace Cars;
 
-public class ElectricCar : Car
+public class ElectricCar : Car, IVehicle
 {
     private double _batteryLevel; // от 0 до 100
     private double _mileageForElectricCars;
@@ -16,7 +16,16 @@ public class ElectricCar : Car
     {
         _batteryLevel = Math.Min(initialCharge, ChargeCapacity); // максимум 100%
     }
-   
+
+    public new void StartEngine()
+    {
+        Console.WriteLine($"{Brand} electric motor is on.");
+    }
+
+    public new void StopEngine()
+    {
+        Console.WriteLine($"{Brand} electric motor is off.");
+    }
     public new void DisplayInfo()
     {
         Console.WriteLine($"{Brand} {Model} (electro {Year}) - mileage: {MileageForElectricCars} km, Battery Level: {BatteryLevel}%");
