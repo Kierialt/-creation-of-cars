@@ -35,13 +35,10 @@ class Program
         Console.WriteLine("\nПопробуем проехать 637 км (хватит топлива):");
         car.Drive(637);
         car.DisplayInfo();
+
+
         
-        
-        
-        
-        
-        
-        
+        Console.WriteLine("\n\n\n");
         ElectricCar electricCar = new ElectricCar("Toyota", "Corolla", 2023, 10); // Создаем машину с 10 литрами топлива
         electricCar.DisplayInfo();
 
@@ -64,11 +61,11 @@ class Program
         Console.WriteLine("\nПопробуем проехать 502 км (не хватит pfhzlf):");
         electricCar.Drive(502);
         electricCar.DisplayInfo();
-        
+
         Console.WriteLine("\nЗаряжаем на 200 процентов (превышен бак):");
         electricCar.Charge();
         electricCar.DisplayInfo();
-        
+
         Console.WriteLine("\nПопробуем проехать 637 км (хватит заряда):");
         electricCar.Drive(637);
         electricCar.DisplayInfo();
