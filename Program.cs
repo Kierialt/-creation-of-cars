@@ -27,11 +27,11 @@ class Program
         Console.WriteLine("\nПопробуем проехать 502 км (не хватит топлива):");
         car.Drive(502);
         car.DisplayInfo();
-        
+
         Console.WriteLine("\nЗаправляем 200 литров (превышен бак):");
         car.Refuel();
         car.DisplayInfo();
-        
+
         Console.WriteLine("\nПопробуем проехать 637 км (хватит топлива):");
         car.Drive(637);
         car.DisplayInfo();
@@ -72,5 +72,7 @@ class Program
         Console.WriteLine("\nПопробуем проехать 637 км (хватит заряда):");
         electricCar.Drive(637);
         electricCar.DisplayInfo();
+        
+        Console.WriteLine(($"\n\ntotal number of cars produced: {Car.TotalCars}").ToUpper());
     }
 }
