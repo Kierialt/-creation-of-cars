@@ -5,85 +5,30 @@ class Program
 {
     static void Main()
     {
-       /*
-        Car car = new Car("Toyota", "Corolla", 2023, 10); // Создаем машину с 10 литрами топлива
-        car.DisplayInfo();
+        IVehicle vehicle = null;
+        bool running = true;
 
-        Console.WriteLine("\nЕдем 100 км:");
-        car.Drive(100);
-        car.DisplayInfo();
+        while (running)
+        {
+            Console.WriteLine("\n---MENU---");
+            Console.WriteLine("1. Create Car");
+            Console.WriteLine("2. Create Electric Car");
+            Console.WriteLine("3. Start engine");
+            Console.WriteLine("4. Drive");
+            Console.WriteLine("5. Stop engine");
+            Console.WriteLine("6. Refuel / Recharge");
+            Console.WriteLine("7. Show Total cars");
+            Console.WriteLine("0. Exit");
 
-        Console.WriteLine("\nПопробуем проехать 500 км (не хватит топлива):");
-        car.Drive(500);
-        car.DisplayInfo();
-
-        Console.WriteLine("\nЗаправляем 30 литров:");
-        car.Refuel();
-        car.DisplayInfo();
-
-        Console.WriteLine("\nЗаправляем 20 литров:");
-        car.Refuel();
-        car.DisplayInfo();
-
-        Console.WriteLine("\nПопробуем проехать 502 км (не хватит топлива):");
-        car.Drive(502);
-        car.DisplayInfo();
-
-        Console.WriteLine("\nЗаправляем 200 литров (превышен бак):");
-        car.Refuel();
-        car.DisplayInfo();
-
-        Console.WriteLine("\nПопробуем проехать 637 км (хватит топлива):");
-        car.Drive(637);
-        car.DisplayInfo();
+            Console.Write("\nEnter your choice: ");
+            string choice = Console.ReadLine();
 
 
-        
-        
-        
-        Console.WriteLine("\n\n\n");
-        ElectricCar electricCar = new ElectricCar("Toyota", "Corolla", 2023, 10); // Создаем машину с 10 литрами топлива
-        electricCar.DisplayInfo();
-
-        Console.WriteLine("\nЕдем 100 км:");
-        electricCar.Drive(100);
-        electricCar.DisplayInfo();
-
-        Console.WriteLine("\nПопробуем проехать 500 км (не хватит заряда):");
-        electricCar.Drive(500);
-        electricCar.DisplayInfo();
-
-        Console.WriteLine("\nЗаряжаем на 30 процентов:");
-        electricCar.Charge();
-        electricCar.DisplayInfo();
-
-        Console.WriteLine("\nЗаряжаем на 20 процентов:");
-        electricCar.Charge();
-        electricCar.DisplayInfo();
-
-        Console.WriteLine("\nПопробуем проехать 502 км (не хватит pfhzlf):");
-        electricCar.Drive(502);
-        electricCar.DisplayInfo();
-
-        Console.WriteLine("\nЗаряжаем на 200 процентов (превышен бак):");
-        electricCar.Charge();
-        electricCar.DisplayInfo();
-
-        Console.WriteLine("\nПопробуем проехать 637 км (хватит заряда):");
-        electricCar.Drive(637);
-        electricCar.DisplayInfo();
-        */
-        
-        
-        
-        
-        Console.WriteLine("\n\n\n");
-        IVehicle myVehicle = new ElectricCar("Tesla", "Model 3", 2022, 80);
-        myVehicle.StartEngine();
-        myVehicle.Drive(50);
-        myVehicle.StopEngine();
-
-        
-        Console.WriteLine(($"\n\ntotal number of cars produced: {Car.TotalCars}").ToUpper());
+            switch (choice)
+            {
+                case "1": Console.WriteLine("Brand?"); break;
+                
+            }
+        }
     }
 }
