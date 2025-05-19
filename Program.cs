@@ -22,8 +22,8 @@ class Program
 
             Console.Write("\nEnter your choice: ");
             string choice = Console.ReadLine();
-
-
+            
+            //TODO
             switch (choice)
             {
                 case "1": Console.WriteLine("Brand?"); break;
